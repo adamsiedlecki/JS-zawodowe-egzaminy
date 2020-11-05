@@ -1,0 +1,46 @@
+<!-- https://egzamin-e14.blogspot.com/2018/06/arkusz-e14-07-1706.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>KALKULATOR CENY MIESZKANIA</h1>
+    <input type="number" name="area" id="area"> 
+    <label for="area">Podaj metraż mieszkania w m<sup>2</sup></label> <br>
+    <input type="number" name="rooms" id="rooms">
+    <label for="rooms">Liczba pokoi z zamontowanym okablowaniem sieciowym</label> <br>
+    <input type="checkbox" name="tiles" id="tiles">
+    <label for="tiles">Kafelki w łazience?</label> <br>
+    <button onClick="oblicz()">OBLICZ</button> <br>
+    <div id="result"></div>
+
+    <script>
+        function oblicz(){
+            // tiles to kafelki
+            var price = 0.0;
+
+            var area = document.getElementById("area").value;
+            var rooms = document.getElementById("rooms").value;
+            var areTiles = document.getElementById("tiles").checked;
+
+            price += area * 4000;
+            price += rooms * 1000;
+            if(areTiles){
+                price+=2000;
+            }
+            var elem = document.createElement("p");
+            elem.innerText = "Koszt mieszkania: "+price+" zł";
+
+            document.getElementById("result").innerHTML="";
+            document.getElementById("result").appendChild(elem);
+
+
+        }
+    </script>
+
+</body>
+</html>
