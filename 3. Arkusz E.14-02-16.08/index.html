@@ -1,43 +1,26 @@
-<!-- http://egzamin-e14.blogspot.com/2016/12/arkusz-e14-01-1608.html -->
+<!-- http://egzamin-e14.blogspot.com/2016/12/arkusz-e14-02-1608.html -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miernik jaskości hasła</title>
-    <link rel="stylesheet" href="styl.css">
+    <title>Document</title>
 </head>
 <body>
-    <div id="container">
-        <div id="banner">
-            <h1><a href="index.html">Sprawdź swoje hasło</a></h1>
-        </div>
-        <div id="panel-left">
-            <h2>WYBIERZ</h2>
-            <ol>
-                <li><a href="haslo.html">Sprawdź hasło</a></li>
-                <li><a href="zasady.html">Zasady tworzenia hasła</a></li>
-            </ol>
-        </div>
-        <div id="panel-right">
+    <input type="password" name="" id="haslo">
+    <button onClick="weryfikuj()">WERYFIKUJ</button> <br>
+    <div id="result"></div>
 
-            <script>
+    <script>
 
-                function check(){
-                    var haslo = document.getElementById("pole").value;
+        function weryfikuj(){
+            var haslo = document.getElementById("haslo").value;
 
-                    // TESTY WYRAŻEŃ REGULARNYCH
-                    // if(/\a/.test("bba")){
-                    //     alert("tak");
-                    // }else{
-                    //     alert("nie");
-                    // }
-
-                    if(haslo.length==0){
+            if(haslo.length==0){
                         var element = document.createElement("a"); // utworzenie elementu
                         element.setAttribute("style", "color: red;"); // ustawienie atrybutów elementu
-                        element.innerText = "WPISZ HASŁO!";
+                        element.innerText = "HASŁO JEST PUSTE!";
                         document.getElementById("result").innerHTML = ""; // wyczyszczenie dotychczasowych elementów child
                         document.getElementById("result").appendChild(element); // dołączenie elementu do znacznika result
 
@@ -46,7 +29,7 @@
                         // dobre
                         var element = document.createElement("a"); // utworzenie elementu
                         element.setAttribute("style", "color: green;"); // ustawienie atrybutów elementu
-                        element.innerText = "DOBRE";
+                        element.innerText = "HASŁOJEST DOBRE";
                         document.getElementById("result").innerHTML = ""; // wyczyszczenie dotychczasowych elementów child
                         document.getElementById("result").appendChild(element); // dołączenie elementu do znacznika result
 
@@ -54,7 +37,7 @@
                         // średnie
                         var element = document.createElement("a"); // utworzenie elementu
                         element.setAttribute("style", "color: blue;"); // ustawienie atrybutów elementu
-                        element.innerText = "ŚREDNIE";
+                        element.innerText = "HASŁO JEST ŚREDNIE";
                         document.getElementById("result").innerHTML = ""; // wyczyszczenie dotychczasowych elementów child
                         document.getElementById("result").appendChild(element); // dołączenie elementu do znacznika result
 
@@ -62,25 +45,13 @@
                         // słabe
                         var element = document.createElement("a"); // utworzenie elementu
                         element.setAttribute("style", "color: yellow;"); // ustawienie atrybutów elementu
-                        element.innerText = "SŁABE";
+                        element.innerText = "HASŁOJESTSŁABE";
                         document.getElementById("result").innerHTML = ""; // wyczyszczenie dotychczasowych elementów child
                         document.getElementById("result").appendChild(element); // dołączenie elementu do znacznika result
 
                     }
-                }
+        }
 
-            </script>
-
-            <p>Twoje hasło: </p>
-            <input type="password" name="" id="pole">
-            <input type="button" value="Sprawdź" onClick="check()"> <br>
-            <p id="result"></p>
-
-        </div>
-        <div id="footer">
-            <h3>Miernik jakości hasła</h3> <br>
-            <p>Stronę opracował: PESEL Siedleckiego</p>
-        </div>
-    </div>
+    </script>
 </body>
 </html>
