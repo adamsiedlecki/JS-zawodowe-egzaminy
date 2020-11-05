@@ -1,0 +1,12 @@
+Egzamin ogólnie łatwy, ale pojawiły się wyrażenia regularne.
+Jest to temat zaawansowany ale do zrobienia.
+Należy zapamiętać:
+
+var jakisNapis = "AA5";
+/\d/.test(jakisNapis)
+
+Takie wyrażenie zwróci true, ponieważ AA5 zawiera cyfrę - \d oznacza cyfry dziesiętne 0-9
+
+Należy też pamiętać, że:
+margines zewnętrzny to margin;
+margines wewnętrzny to padding
