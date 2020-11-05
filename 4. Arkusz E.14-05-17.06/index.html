@@ -1,0 +1,46 @@
+<!-- https://egzamin-e14.blogspot.com/2017/11/arkusz-e14-05-1706.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Malowanie pokoju 8zł / m2</h1>
+    <p>Wymiary pokoju w metrach:</p>
+    <input type="number" name="" id="width">
+    <input type="number" name="" id="length">
+    <button onClick="oblicz()">OBLICZ KOSZT</button> <br>
+
+    <div id="result"></div>
+
+    <script>
+
+        function oblicz(){
+            var width = document.getElementById("width").value;
+            var length = document.getElementById("length").value;
+            var height = 2.7;
+
+            var area = 2* width*height + 2* length*height; // są 2 ściany długość/wysokość i 2 ściany szerokość na wysokość
+            var price = area*8;
+
+            document.getElementById("result").innerHTML = ""; // czyścimy diva
+
+            var elem1 = document.createElement("p");
+            elem1.innerText = "Powierzchnia całkowita ścian: "+area+" m^2";
+
+            var elem2 = document.createElement("p");
+            elem2.innerText = "Koszt malowania: "+price+" zł";
+
+            document.getElementById("result").appendChild(elem1);
+            document.getElementById("result").appendChild(document.createElement("br"));
+            document.getElementById("result").appendChild(elem2);
+
+        }
+
+    </script>
+
+</body>
+</html>
