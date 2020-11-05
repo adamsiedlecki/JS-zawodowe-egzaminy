@@ -1,0 +1,15 @@
+W mojej ocenie ten arkusz był łatwy.
+Pozostawia on wiele dowolności, nie wymaga wysiłku (np. sprawdzenia czy podawane dane są liczbami!).
+
+Arkusz nie podaje wielu rzeczy, np. wysokości elementów div - co może być dziwne i rozkojarzające.
+
+Jednym problemem jest to, że gdy ustawiamy obok siebie divy o szerokości 40% i 60% to brakuje miejsca 
+(jeśli są ustawione bordery - arkusz tego nie wymaga, ale na wzorze struktury są).
+Dlaczego tak się dzieje?
+Bordery też mają swoją szerokość. 
+
+Można łatwo rozwiązać ten problem, ustawiając 
+
+box-sizing: border-box;
+
+w każdym divie.
