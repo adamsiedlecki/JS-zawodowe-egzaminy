@@ -1,0 +1,39 @@
+<!-- https://egzamin-e14.blogspot.com/2018/06/arkusz-e14-06-1706.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Kafelkowanie łazienki</h1>
+    <input type="number" name="" id="area"> <br>
+    <input type="radio" name="plytki" id="plytki1" checked> 
+    <label for="plytki1">Płytki 20 x 20 cm</label> <br>
+    <input type="radio" name="plytki" id="plytki2"> 
+    <label for="plytki2">Płytki 25 x 12 cm</label> <br>
+    <button onClick="oblicz()">PRZELICZ</button>
+    <div id="result"></div>
+
+    <script>
+
+        function oblicz(){
+            var area = document.getElementById("area").value;
+            var cost = 0.0;
+            if(document.getElementById("plytki1").checked == true){
+                cost = area*70;
+            }else{
+                cost = area*80;
+            }
+            var elem = document.createElement("p");
+            elem.innerText = "Koszt kafelkowania: "+cost+" zł";
+            document.getElementById("result").innerHTML = "";
+            document.getElementById("result").appendChild(elem);
+        }
+
+    </script>
+
+</body>
+</html>
