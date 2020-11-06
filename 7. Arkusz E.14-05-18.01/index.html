@@ -1,0 +1,49 @@
+<!-- https://egzamin-e14.blogspot.com/2018/05/arkusz-e14-05-1801.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Ile kosztuje ogłoszenie?</h2>
+    <label for="liczba">Podaj liczbę ogłoszeń:</label>
+    <input type="number"  id="liczba"> 
+    <br>
+    
+    <label for="upust">Policz upust na newsletter</label>
+    <input type="checkbox" name="" id="upust">
+    <br>
+
+    <button onClick="oblicz()">OBLICZ</button>
+    <br>
+    <div id="result"></div>
+    
+    <script>
+        function oblicz(){
+            var koszt = 0.0;
+            var iloscOgloszen = document.getElementById("liczba").value;
+            if(iloscOgloszen>0 && iloscOgloszen <51){
+                koszt += iloscOgloszen*2;
+            }else if(iloscOgloszen>=51){
+                koszt+= iloscOgloszen*1;
+            }
+            if(document.getElementById("upust").checked){
+                var upust = iloscOgloszen*0.20;
+                koszt -= upust;
+            }
+
+
+            var elem = document.createElement("p");
+            elem.innerText = "Koszt ogłoszeń: "+koszt+" PLN";
+
+            var res = document.getElementById("result");
+            res.innerHTML = "";
+            res.appendChild(elem);
+        }
+    </script>
+
+</body>
+</html>
