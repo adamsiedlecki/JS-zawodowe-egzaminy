@@ -1,0 +1,48 @@
+<!-- https://egzamin-e14.blogspot.com/2019/05/arkusz-e14-02-1901.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Podaj rozmiar tekstu w procentach: 
+        <input type="number" name=""  id="rozmiar">
+    </p>
+    <p>
+        <input type="radio" name="styl" id="prosty" value="prosty" checked>
+        <label for="prosty">PROSTY</label> <br>
+        <input type="radio" name="styl" id="kursywa" value="kursywa">
+        <label for="kursywa">KURSYWA</label>
+    </p>
+    <p>Jakim kolorem sformatować tekst?</p>
+    <button onClick="styluj('red')" style="background-color: red">CZERWONY</button>
+    <button onClick="styluj('green')" style="background-color: green">ZIELONY</button>
+    <button onClick="styluj('blue')" style="background-color: blue">NIEBIESKI</button>
+    <p id="paragraf">To jest przykład paragrafu, który może być dowolnie formatowany przez Java Script</p>
+
+    <script>
+        function styluj(color){
+            var styl = "";
+            var radios = document.getElementsByName("styl");
+            for(var i = 0; i<radios.length; i++){
+                if(radios[i].type == "radio" && radios[i].checked){
+                    styl = radios[i].value;
+                }
+            }
+            var rozmiar = document.getElementById("rozmiar").value;
+
+            if(styl=="kursywa"){
+                styl = "italic";
+            }else if(styl=="prosty"){
+                styl = "normal";
+            }
+
+
+            document.getElementById("paragraf").setAttribute("style", "color: "+color+"; font-size: "+rozmiar+"% ; font-style: "+styl+";");
+        }
+    </script>
+</body>
+</html>
