@@ -1,0 +1,60 @@
+<!-- http://egzamin-e14.blogspot.com/2020/02/arkusz-e14-03-2001-sg.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Strefa zamówień</h1>
+    <label for="numer">Numer kształtu:</label>
+    <br>
+    <input type="number" name="" id="numer">
+    <br>
+    <label for="">skomponuj swój kolor, podaj RGB:</label>
+
+    <label for="r">R:</label>
+    <input type="number" name="" id="r" value="0">
+
+    <label for="g">G:</label>
+    <input type="number" name="" id="g" value="0">
+
+    <label for="b">B:</label>
+    <input type="number" name="" id="b" value="0">
+
+    <br>
+    <button onClick="zamow()">Zamówienie</button>
+    <br>
+    <p id="wybranyKsztalt">Twoje zamówienie</p>
+    <br>
+    <button id="wybranyKolor">Wybrany kolor</button>
+
+    <script>
+
+        function zamow(){
+            var tekst = "Twoje zamówienie to ";
+            var numer = document.getElementById("numer").value;
+            if(numer==1){
+                tekst = tekst+" cytryna"
+            }else if(numer==2){
+                tekst = tekst+" liść"
+            }
+            else if(numer==3){
+                    tekst = tekst+" banan"
+            }else{
+                tekst = tekst+" inny"
+            }
+            document.getElementById("wybranyKsztalt").innerText = tekst;
+
+            var r = document.getElementById("r").value;
+            var g = document.getElementById("g").value;
+            var b = document.getElementById("b").value;
+
+            document.getElementById("wybranyKolor").setAttribute("style", "background-color: rgb("+r+","+g+","+b+");");
+        }
+
+    </script>
+</body>
+</html>
