@@ -1,0 +1,35 @@
+<!-- https://egzamin-e14.blogspot.com/2018/10/arkusz-e14-06-1806.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Oblicz koszt dostawy</h3>
+    <input type="checkbox" name="" id="zielona">
+    <label for="zielona">Jestem z Zielonej Góry</label>
+    <p>albo</p>
+    <label for="kilometry"></label>
+    <input type="number" name="" id="kilometry">
+    <button onClick="oblicz()">Oblicz</button> <br>
+    <p id="result"></p>
+
+    <script>
+        function oblicz(){
+            var zielona = document.getElementById("zielona").checked;
+            var km = document.getElementById("kilometry").value;
+
+            if(zielona){
+                document.getElementById("result").innerText = "Dowieziemy Twoją pizzę za darmo ";
+            }else{
+                var koszt = km * 2 *1;
+                document.getElementById("result").innerText = "Dowóz będzie cię kosztował "+koszt+" złotych";
+            }
+        }
+    </script>
+    
+</body>
+</html>
