@@ -1,0 +1,37 @@
+<!-- https://egzamin-e14.blogspot.com/2018/11/arkusz-e14-05-1806.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>
+        Ile będzie kosztowało moje wesele?
+    </h2>
+        <label for="guests">Podaj liczbę gości: </label>
+        <input type="number" name="" id="guests"> <br>
+        <input type="checkbox" name="" id="poprawiny">
+        <label for="poprawiny">Wesele z poprawinami?</label> <br>
+        <button onClick="oblicz()">Oblicz koszt</button> <br>
+        <p id="result"></p>
+
+    <script>
+        function oblicz(){
+            var guests = document.getElementById("guests").value;
+            var poprawiny = document.getElementById("poprawiny").checked;
+            var cost = guests*100;
+            if(poprawiny){
+                cost+=cost*0.3;
+            }
+            var result = document.getElementById("result");
+            result.innerText = "Koszt Twojego wesela to "+cost+" złotych";
+
+        }
+    </script>
+
+
+</body>
+</html>
