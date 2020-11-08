@@ -1,0 +1,43 @@
+<!-- https://egzamin-e14.blogspot.com/2019/05/arkusz-e14-03-1901.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="numer">Podaj numer kawy:</label>
+    <br>
+    <input type="number" name="" id="numer">
+    <br>
+    <label for="waga">Podaj wagę w dekagramach</label>
+    <br>
+    <input type="number" name="" id="waga">
+    <br>
+    <button onClick="zamow()">Zamów</button>
+    <p id="result"></p>
+
+    <script>
+        function zamow(){
+            var numerKawy = document.getElementById("numer").value;
+            var waga = document.getElementById("waga").value; // dekagramy
+
+            var cena = 0; //  w przypadku wpisania innej wartości niż 1-3 cena wynosi 0 zł
+            if(numerKawy==1){
+                cena = 5;
+            }else if(numerKawy==2){
+                cena = 7;
+            }
+            else if(numerKawy==3){
+                cena = 6;
+            }
+
+            var koszt = cena * waga;
+            document.getElementById("result").innerText = "Koszt zamówienia wynosi "+koszt+" zł";
+        }
+    </script>
+
+</body>
+</html>
