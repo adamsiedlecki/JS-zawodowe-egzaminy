@@ -1,0 +1,88 @@
+<!-- https://egzamin-e14.blogspot.com/2019/10/arkusz-e14-05-1906.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <hr>
+    <h2>Kontakt</h2>
+    <hr>
+    <table>
+        <tr>
+            <td>Imię:</td>
+            <td>
+                <input type="text" name="" id="imie">
+            </td>
+        </tr>
+        <tr>
+            <td>Nazwisko:</td>
+            <td>
+                <input type="text" name="" id="nazwisko">
+            </td>
+        </tr>
+        <tr>
+            <td>E-mail:</td>
+            <td>
+                <input type="text" name="" id="email">
+            </td>
+        </tr>
+        <tr>
+            <td>Usługa:</td>
+            <td>
+                <textarea name="" id="usluga" cols="30" rows="10"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="checkbox" name="" id="regulamin">
+                <label for="regulamin">Zapoznałam/em się z regulaminem</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button onClick="resetuj()">Resetuj</button>
+                <button onClick="przeslij()">Prześlij</button>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <p id="wynik"></p>
+
+    <script>
+
+        function resetuj(){
+            document.getElementById("imie").value = "";
+            document.getElementById("nazwisko").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("usluga").value = "";
+            document.getElementById("regulamin").checked = false;
+        }
+
+        function przeslij(){
+            var imie = document.getElementById("imie").value;
+            var nazwisko = document.getElementById("nazwisko").value;
+            var email = document.getElementById("email").value;
+            var usluga = document.getElementById("usluga").value;
+            var reg = document.getElementById("regulamin").checked;
+
+            if(!reg){
+                document.getElementById("wynik").innerText = "Musisz zapoznać się z regulaminem";
+                document.getElementById("wynik").setAttribute("style", "color: red;");
+            }else{
+                document.getElementById("wynik").setAttribute("style", "color: black;");
+                document.getElementById("wynik").innerText = imie.toUpperCase()+" "+nazwisko.toUpperCase()+ " \n "
+                +"Treść Twojej sprawy: "+usluga+ "\n Na podany e-mail zostanie wysłana oferta.";
+            }
+        }
+
+    </script>
+
+
+</body>
+</html>
