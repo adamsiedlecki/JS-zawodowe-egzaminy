@@ -1,0 +1,85 @@
+<!-- https://egzamin-e14.blogspot.com/2019/10/arkusz-e14-06-1906.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Formularz kontaktowy</h3>
+    <hr>
+    <table>
+        <tr>
+            <td>Imię:</td>
+            <td>
+                <input type="text" name="" id="imie">
+            </td>
+        </tr>
+        <tr>
+            <td>Nazwisko:</td>
+            <td>
+                <input type="text" name="" id="nazwisko">
+            </td>
+        </tr>
+        <tr>
+            <td>E-mail:</td>
+            <td>
+                <input type="text" name="" id="email">
+            </td>
+        </tr>
+        <tr>
+            <td>Usługa:</td>
+            <td>
+                <select name="" id="usluga">
+                    <option value="naprawa komputera">naprawa komputera</option>
+                    <option value="odzyskiwanie danych">odzyskiwanie danych</option>
+                    <option value="problemy z oprogramowaniem">problemy z oprogramowaniem</option>
+                    <option value="konfiguracja sieci LAN">konfiguracja sieci LAN</option>
+                    <option value="inne">inne</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="checkbox" name="" id="kopia" checked>
+                <label for="kopia">Wyślij kopię wiadomości</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button onClick="resetuj()">Resetuj</button>
+                <button onClick="przeslij()">Prześlij</button>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <p id="wynik"></p>
+
+    <script>
+
+        function resetuj(){
+            document.getElementById("imie").value = "";
+            document.getElementById("nazwisko").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("usluga").value = "";
+            document.getElementById("kopia").checked = false;
+        }
+
+        function przeslij(){
+            var imie = document.getElementById("imie").value;
+            var nazwisko = document.getElementById("nazwisko").value;
+            var email = document.getElementById("email").value;
+            var usluga = document.getElementById("usluga").value;
+            var kopia = document.getElementById("kopia").checked;
+
+            document.getElementById("wynik").innerText = imie+" "+nazwisko+ " \n "+email.toLowerCase()+" \n"
+                +"Usługa: "+usluga;
+        }
+
+    </script>
+</body>
+</html>
