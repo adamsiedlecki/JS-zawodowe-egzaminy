@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,700;1,700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Righteous&family=Roboto+Mono:ital,wght@0,700;1,700&display=swap" rel="stylesheet">     <style>
+        body{
+            font-family: 'Roboto Mono', monospace;
+        }
+        #container{
+            width: 100%;
+            height: 700px;
+            text-align: center;
+
+        }
+        #container > *{
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            white-space: pre-line;
+        }
+        form{
+            display: inline-block;
+        }
+        h2{
+            display: inline-block;
+            font-family: 'Righteous', cursive;
+        }
+        input[type=number]{
+            border: 3px dotted black;
+            border-radius: 4px;
+        }
+        input[type=button]{
+            background-color: black;
+            color: white;
+            border-radius: 4px;
+            width: 150px;
+            height: 40px;
+
+        }
+    </style>
+
+</head>
+<body>
+
+    <script>
+        function rysujFormularz(){
+            var bryla = document.getElementById("bryla").value;
+            var header = document.getElementById("header");
+            var form = document.getElementById("form1");
+            form.innerHTML = "";
+            document.getElementById("wynik").innerText = "";
+
+            if(bryla=="kula"){
+                header.innerText = "Kula";
+                
+                var rInput = document.createElement("input");
+                rInput.setAttribute("id", "rInput");
+                rInput.setAttribute("type", "number");
+
+                var rLabel = document.createElement("label");
+                rLabel.setAttribute("for", "rInput");
+                rLabel.innerText = "Promień kuli: ";
+
+                var button = document.createElement("input");
+                button.setAttribute("type", "button");
+                button.setAttribute("value", "LICZ");
+                button.setAttribute("onClick", "oblicz('kula')")
+
+                form.appendChild(document.createElement("br"));
+                form.appendChild(rLabel);
+                form.appendChild(rInput);
+                form.appendChild(document.createElement("br"));
+                form.appendChild(button);
+                form.appendChild(document.createElement("br"));
+                
+
+            }else if(bryla=="stozek"){
+                header.innerText = "Stożek";
+                // R
+                var rInput = document.createElement("input");
+                rInput.setAttribute("id", "rInput");
+                rInput.setAttribute("type", "number");
+
+                var rLabel = document.createElement("label");
+                rLabel.setAttribute("for", "rInput");
+                rLabel.innerText = "Promień podstawy stożka: ";
+
+                // L
+                var lInput = document.createElement("input");
+                lInput.setAttribute("id", "lInput");
+                lInput.setAttribute("type", "number");
+
+                var lLabel = document.createElement("label");
+                lLabel.setAttribute("for", "rInput");
+                lLabel.innerText = "L: ";
+                // H
+                var hInput = document.createElement("input");
+                hInput.setAttribute("id", "hInput");
+                hInput.setAttribute("type", "number");
+
+                var hLabel = document.createElement("label");
+                hLabel.setAttribute("for", "hInput");
+                hLabel.innerText = "H: ";
+                //
+
+                var button = document.createElement("input");
+                button.setAttribute("type", "button");
+                button.setAttribute("value", "LICZ");
+                button.setAttribute("onClick", "oblicz('stozek')")
+
+                form.appendChild(document.createElement("br"));
+                form.appendChild(rLabel);
+                form.appendChild(rInput);
+                form.appendChild(document.createElement("br"));
+                form.appendChild(lLabel);
+                form.appendChild(lInput);
+                form.appendChild(document.createElement("br"));
+                form.appendChild(hLabel);
+                form.appendChild(hInput);
+                form.appendChild(document.createElement("br"));
+                form.appendChild(button);
+                form.appendChild(document.createElement("br"));
+
+            }else if(bryla=="szescian"){
+                header.innerText = "Sześcian";
+
+                var aInput = document.createElement("input");
+                aInput.setAttribute("id", "aInput");
+                aInput.setAttribute("type", "number");
+
+                var aLabel = document.createElement("label");
+                aLabel.setAttribute("for", "aInput");
+                aLabel.innerText = "Krawędź sześcianu: ";
+
+                var button = document.createElement("input");
+                button.setAttribute("type", "button");
+                button.setAttribute("value", "LICZ");
+                button.setAttribute("onClick", "oblicz('szescian')")
+
+                form.appendChild(document.createElement("br"));
+                form.appendChild(aLabel);
+                form.appendChild(aInput);
+                form.appendChild(document.createElement("br"));
+                form.appendChild(button);
+                form.appendChild(document.createElement("br"));
+
+            }
+        }
+
+        function oblicz(bryla){
+            if(bryla=="kula"){
+                var r = document.getElementById("rInput").value;
+
+                var pole = 4 * Math.PI * r * r;
+                var v = 4 / 3 * Math.PI * r * r * r;
+
+                document.getElementById("wynik").innerText = "Pole kuli: "+pole+" \n Objętość kuli: "+v;
+            }else if(bryla=="stozek"){
+                var r = document.getElementById("rInput").value;
+                var l = document.getElementById("lInput").value;
+                var h = document.getElementById("hInput").value;
+                //alert(r+" "+l);
+                var pole = Math.PI * r * (r+l);
+                var v = Math.PI * r * r *h /3;
+
+                document.getElementById("wynik").innerText = "Pole stożka:  "+pole+" \n Objętość stożka: "+v;
+
+            }else if(bryla=="szescian"){
+                var a = document.getElementById("aInput").value;
+                var pole = (a*a)*6;
+                var v = a*a*a;
+
+                document.getElementById("wynik").innerText = "Pole sześcianu: "+pole+" \n"+" Objętość sześcianu: "+v;
+
+            }
+        }
+    </script>
+
+    <div id="container">
+        <h2 id="header"></h2> <br>
+        
+        <label for="bryla">Wybierz bryłę:</label>
+        <select name="bryla" id="bryla" onClick="rysujFormularz()">
+            <option value="kula" selected="selected">Kula</option>
+            <option value="stozek">Stożek</option>
+            <option value="szescian">Sześcian</option>
+        </select>
+        <br>
+        <form id="form1">
+
+        </form>
+        <br>
+        <h2 id="wynik"></h2>
+    </div>
+
+    <script>
+        rysujFormularz();
+    </script>
+</body>
+</html>
