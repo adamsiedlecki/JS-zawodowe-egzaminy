@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #section-kula{
+            width: 32%;
+            height: 500px;
+            border-right: 2px dotted;
+            float: left;
+        }
+        #section-stozek{
+            float: left;
+            width: 32%;
+            height: 500px;
+            border-right: 2px dotted;
+        }
+        #section-szescian{
+            float: left;
+            width: 32%;
+            height: 500px;
+            border-right: 2px dotted;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        function liczKula(){
+            var r = document.getElementById("kula-r").value;
+            r = parseFloat(r);
+
+            var pole = 4 * Math.PI * r * r;
+            var v = 4 / 3 * Math.PI * r * r * r;
+
+            document.getElementById("kula-wynik").innerText = "Pole kuli: "+pole+" \n Objętość kuli: "+v;
+        }
+        function liczStozek(form){
+            var r = form.stozekR.value;
+            var l = form.stozekL.value;
+            var h = form.stozekH.value;
+            //alert(r+" "+l);
+            var pole = Math.PI * r * (r+l);
+            var v = Math.PI * r * r *h /3;
+
+            document.getElementById("stozek-wynik").innerText = "Pole stożka:  "+pole+" \n Objętość stożka: "+v;
+        }
+        function liczSzescian(form){
+            var a = form.a.value;
+            var pole = (a*a)*6;
+            var v = a*a*a;
+
+            document.getElementById("szescian-wynik").innerText = "Pole sześcianu: "+pole+" \n"+" Objętość sześcianu: "+v;
+        }
+    </script>
+
+    <div id="section-kula">
+        <form action="" name="formPoleKuli">
+            <h2>KULA</h2>
+            Promień: <input type="number" name="kula-r" id="kula-r"> <br>
+            <input type="button" onClick="liczKula()" value="LICZ"> <br>
+        </form>
+        <h2 id="kula-wynik"></h2>
+    </div>
+    <div id="section-stozek">
+        <h2>Stożek</h2>
+        <form action="">
+            Promień: <input type="number" name="stozekR" id=""> <br>
+            L: <input type="number" name="stozekL" id=""> <br>
+            H: <input type="number" name="stozekH" id=""> <br>
+            <input type="button" value="LICZ" onClick="liczStozek(this.form)"> <br>
+            <h2 id="stozek-wynik"></h2>
+        </form>
+    </div>
+    <div id="section-szescian">
+        <form action="">
+            Podaj długość krawędzi: <input type="number" name="a" id=""> <br>
+            <input type="button" value="LICZ" onClick="liczSzescian(this.form)"> <br>
+        </form>
+        <h2 id="szescian-wynik"></h2>
+    </div>
+</body>
+</html>
