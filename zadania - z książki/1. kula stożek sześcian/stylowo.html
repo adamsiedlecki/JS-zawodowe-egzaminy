@@ -7,16 +7,19 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,700;1,700&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Righteous&family=Roboto+Mono:ital,wght@0,700;1,700&display=swap" rel="stylesheet">     <style>
-        body{
+        body, html{
             font-family: 'Roboto Mono', monospace;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
-        #container{
+        #content{
             width: 100%;
             height: 700px;
             text-align: center;
 
         }
-        #container > *{
+        #content > *{
             text-align: center;
             margin-left: auto;
             margin-right: auto;
@@ -40,6 +43,17 @@
             width: 150px;
             height: 40px;
 
+        }
+
+        /*
+        próba ostylowania particles.js 
+        https://stackoverflow.com/questions/40720838/particles-js-as-a-background
+        */
+        canvas {
+            display:block;
+            background: rgb(33,36,50);
+            position: fixed;
+            z-index: -1;
         }
     </style>
 
@@ -179,26 +193,158 @@
             }
         }
     </script>
+    <div id="particles-js"></div>
 
     <div id="container">
-        <h2 id="header"></h2> <br>
+        <div id="content">
+            <h2 id="header"></h2> <br>
         
-        <label for="bryla">Wybierz bryłę:</label>
-        <select name="bryla" id="bryla" onClick="rysujFormularz()">
-            <option value="kula" selected="selected">Kula</option>
-            <option value="stozek">Stożek</option>
-            <option value="szescian">Sześcian</option>
-        </select>
-        <br>
-        <form id="form1">
+            <label for="bryla">Wybierz bryłę:</label>
+            <select name="bryla" id="bryla" onClick="rysujFormularz()">
+                <option value="kula" selected="selected">Kula</option>
+                <option value="stozek">Stożek</option>
+                <option value="szescian">Sześcian</option>
+            </select>
+            <br>
+            <form id="form1">
 
-        </form>
-        <br>
-        <h2 id="wynik"></h2>
+            </form>
+            <br>
+            <h2 id="wynik"></h2>
+        </div>
     </div>
 
     <script>
         rysujFormularz();
+    </script>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/1.18.1/tsparticles.min.js"
+        integrity="sha512-PYHWDEuXOTJ9MZ+/QHqkbgiEYZ+LImQv3i/9NyYOABFvK37e4q4Wg7aQDN1JpoGiEu1TYZh6JMrZluZox2gbDA=="
+        crossorigin="anonymous"
+    ></script>
+
+    <script>
+        // Za pomocą znacznika script powyżej ładujemy skrypt z internetu, który jest odpowiedzialny za particles js
+        // autorem biblioteki jest Vincent Garreau
+        // https://github.com/VincentGarreau/particles.js/blob/master/LICENSE.md
+
+        // poniżej stała konfiguracyjna
+        const particles = {
+            "fpsLimit": 60,
+            "particles": {
+            "number": {
+                "value": 80,
+                "density": {
+                "enable": true,
+                "value_area": 800
+                }
+            },
+            "color": {
+                "value": "#900",
+                "animation": {
+                "enable": true,
+                "speed": 20,
+                "sync": true
+                }
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                "width": 0
+                },
+                "polygon": {
+                "nb_sides": 5
+                },
+            },
+            "opacity": {
+                "value": 0.5,
+                "random": false,
+                "anim": {
+                "enable": false,
+                "speed": 3,
+                "opacity_min": 0.1,
+                "sync": false
+                }
+            },
+            "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                "enable": false,
+                "speed": 20,
+                "size_min": 0.1,
+                "sync": false
+                }
+            },
+            "links": {
+                "enable": true,
+                "distance": 100,
+                "color": "#ffffff",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 6,
+                "direction": "none",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+                }
+            }
+            },
+            "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                "enable": false,
+                "mode": "repulse"
+                },
+                "onclick": {
+                "enable": true,
+                "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                "distance": 400,
+                "line_linked": {
+                    "opacity": 1
+                }
+                },
+                "bubble": {
+                "distance": 400,
+                "size": 40,
+                "duration": 2,
+                "opacity": 0.8
+                },
+                "repulse": {
+                "distance": 200
+                },
+                "push": {
+                "particles_nb": 4
+                },
+                "remove": {
+                "particles_nb": 2
+                }
+            }
+            },
+            "retina_detect": true,
+            "background": {
+            "color": "#fff",
+            "image": "",
+            "position": "50% 50%",
+            "repeat": "no-repeat",
+            "size": "cover"
+            }
+        };
+        tsParticles.load('particles-js', particles);
     </script>
 </body>
 </html>
